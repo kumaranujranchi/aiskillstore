@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function SkillPage({ params }: { params: { slug: string } }) {
+export default async function SkillPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const skill = getSkillBySlug(slug);
 
