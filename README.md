@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Skill Store
 
-## Getting Started
+> Install a Design Brain into your AI Coding Tool
 
-First, run the development server:
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kumaranujranchi/aiskillstore)
+
+## 🎨 What is this?
+
+AI Skill Store is a marketplace for design systems that AI coding agents can understand and follow. Stop shipping generic AI-generated UIs - install a theme and let your AI build beautiful, consistent interfaces.
+
+## ✨ Features
+
+- **4 Premium Themes**: Minimal Core, Nictorys Industrial, Ucam Design, Windsor Editorial
+- **Theme Extraction Tool**: Extract design tokens from any live website
+- **CLI Installation**: Install themes directly into your codebase
+- **Dynamic Marketplace**: Automatically loads themes from markdown files
+
+## 🚀 Quick Start
+
+### Local Development
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deploy to Netlify
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Click the button above or follow the [Deployment Guide](./DEPLOY.md)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ CLI Tool
 
-## Learn More
+Extract themes from live websites:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cd cli
+node index.js extract https://example.com -o my-theme.md
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Install themes into your project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx skill-store-cli install nictorys-industrial
+```
 
-## Deploy on Vercel
+## 📚 Documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Deployment Guide](./DEPLOY.md) - How to deploy to Netlify
+- [Developer Docs](./Docs.md) - Full project documentation
+- [Walkthrough](./walkthrough.md) - Implementation details
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎯 Themes
+
+1. **Minimal Core** (Free) - Clean SaaS starter
+2. **Nictorys Industrial** ($39) - Bold industrial design
+3. **Ucam Design** (Free) - Futuristic tech theme
+4. **Windsor Editorial** ($19) - Elegant blog theme
+
+## 🔧 Tech Stack
+
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS
+- **Fonts**: Google Fonts (Orbitron, Public Sans, Inter)
+- **Deployment**: Netlify
+- **CLI**: Node.js with Cheerio
+
+## 📝 License
+
+MIT
+
+## 🤝 Contributing
+
+Contributions welcome! Feel free to submit issues and pull requests.
+
+---
+
+Built with ❤️ for AI-powered development

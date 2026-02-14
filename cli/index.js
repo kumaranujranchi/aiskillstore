@@ -41,7 +41,7 @@ program
       {
         type: 'password',
         name: 'token',
-        message: 'Enter your Skill Store API Token (try "secret"):',
+        message: 'Enter your License Key:',
         mask: '*',
       },
     ]);

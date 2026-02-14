@@ -7,10 +7,19 @@ export async function GET(
 ) {
   const { slug } = await params;
 
-  // Mock Authentication Check
+  // Authentication Check
   const token = request.headers.get('Authorization');
-  if (!token || !token.startsWith('Bearer ')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const validKey = process.env.SKILL_STORE_API_KEY;
+
+  // If no key is set on the server, we might want to fail open or closed. 
+  // For security, let's fail closed and log an error.
+  if (!validKey) {
+    console.error("SKILL_STORE_API_KEY is not set in environment variables.");
+    return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
+  }
+
+  if (!token || token !== `Bearer ${validKey}`) {
+    return NextResponse.json({ error: 'Unauthorized: Invalid License Key' }, { status: 401 });
   }
 
   const skill = getSkillBySlug(slug);
