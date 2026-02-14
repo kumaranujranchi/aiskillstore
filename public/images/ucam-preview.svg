@@ -1,0 +1,6 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#010A1A"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="48" fill="#FFFFFF" font-weight="bold">UCAM DESIGN</text>
+  <rect x="300" y="350" width="200" height="50" rx="0" fill="#ED1D24"/>
+  <text x="400" y="382" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="white">MONITOR NOW</text>
+</svg>

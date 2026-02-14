@@ -42,3 +42,7 @@ next-env.d.ts
 
 # cli dependencies
 /cli/node_modules
+
+/src/generated/prisma
+/prisma/*.db
+/prisma/*.db-journal

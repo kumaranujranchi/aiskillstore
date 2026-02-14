@@ -8,7 +8,7 @@ preview:
   typography:
     headings: "Orbitron"
     body: "Public Sans"
-  image: "/images/ucam-preview.png"
+  image: "/images/ucam-preview.svg"
 ---
 
 # Ucam Theme Design System

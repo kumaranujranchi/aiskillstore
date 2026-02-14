@@ -8,7 +8,7 @@ preview:
   typography:
     headings: Playfair Display
     body: Lato
-  image: /images/themes/windsor-preview.jpg
+  image: /images/themes/windsor-preview.svg
 ---
 
 # Windsor Editorial Design System

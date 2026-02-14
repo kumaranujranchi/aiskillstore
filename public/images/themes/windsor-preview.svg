@@ -1,0 +1,6 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F9F9F9"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="48" fill="#1A1A1A" font-weight="bold">Windsor Editorial</text>
+  <rect x="300" y="350" width="200" height="50" rx="3" fill="#1A1A1A"/>
+  <text x="400" y="382" dominant-baseline="middle" text-anchor="middle" font-family="serif" font-size="20" fill="#D4AF37">READ MORE</text>
+</svg>

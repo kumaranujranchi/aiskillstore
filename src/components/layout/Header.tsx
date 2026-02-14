@@ -4,9 +4,12 @@ import Link from 'next/link';
 import { Menu, X, Github, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+import { signIn, signOut, useSession } from 'next-auth/react';
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,27 +20,26 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'Themes', href: '#themes' },
-    { name: 'How It Works', href: '#how-it-works' },
+    { name: 'Themes', href: '/#themes' },
+    { name: 'How It Works', href: '/#how-it-works' },
     { name: 'Documentation', href: '/docs' },
-    { name: 'Showcase', href: '#showcase' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Showcase', href: '/#showcase' },
+    { name: 'Pricing', href: '/#pricing' },
     { name: 'Blog', href: '/blog' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
           <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white text-lg">AI</span>
+            <span className="text-white text-lg font-black">UX</span>
           </div>
-          <span className="text-white">Skill Store</span>
+          <span className="text-white">PRO MAX</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -62,14 +64,40 @@ export function Header() {
           >
             <Github size={20} />
           </Link>
-          <button className="text-sm font-medium text-white/80 hover:text-white transition-colors">
-            Sign In
-          </button>
+
+          {session ? (
+            <div className="flex items-center gap-4">
+              <Link href="/dashboard" className="text-sm font-medium text-white/80 hover:text-white transition-colors">
+                Dashboard
+              </Link>
+              <button
+                onClick={() => signOut()}
+                className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+              >
+                Sign Out
+              </button>
+              {session.user?.image && (
+                <img
+                  src={session.user.image}
+                  alt={session.user.name || 'User'}
+                  className="w-8 h-8 rounded-full border border-white/20"
+                />
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={() => signIn('google')}
+              className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+            >
+              Sign In
+            </button>
+          )}
+
           <Link
-            href="#install"
+            href="#themes"
             className="group px-4 py-2 bg-white text-black text-sm font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
           >
-            Install Now
+            Browse Themes
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

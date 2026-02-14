@@ -15,4 +15,5 @@ export interface Skill {
   price: string;
   preview: SkillPreview;
   content: string; // The raw markdown content
+  demoUrl?: string; // Optional URL for a live demo website
 }

@@ -8,7 +8,7 @@ preview:
   typography:
     headings: Inter
     body: Inter
-  image: /images/themes/minimal-preview.jpg
+  image: /images/themes/minimal-preview.svg
 ---
 
 # Minimal Core Design System

@@ -1,0 +1,6 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#020d26"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="48" fill="#ff5e14" font-weight="bold">NICTORYS INDUSTRIAL</text>
+  <rect x="300" y="350" width="200" height="50" rx="25" fill="#ff5e14"/>
+  <text x="400" y="382" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="white">GET STARTED</text>
+</svg>

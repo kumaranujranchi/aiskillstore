@@ -8,7 +8,8 @@ preview:
   typography:
     headings: Barlow Condensed
     body: Open Sans
-  image: /images/themes/nictorys-preview.jpg
+  image: /images/themes/nictorys-preview.svg
+  # demoUrl: "https://nictorys-demo.vercel.app"
 ---
 
 # Nictorys Industrial Theme Design System

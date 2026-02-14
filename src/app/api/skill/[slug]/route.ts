@@ -1,5 +1,6 @@
 import { getSkillBySlug } from '@/lib/skills';
 import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
 
 export async function GET(
   request: NextRequest,
@@ -8,19 +9,33 @@ export async function GET(
   const { slug } = await params;
 
   // Authentication Check
-  const token = request.headers.get('Authorization');
-  const validKey = process.env.SKILL_STORE_API_KEY;
+  const authHeader = request.headers.get('Authorization');
+  const token = authHeader?.replace('Bearer ', '');
+  const masterKey = process.env.SKILL_STORE_API_KEY;
 
-  // If no key is set on the server, we might want to fail open or closed. 
-  // For security, let's fail closed and log an error.
-  if (!validKey) {
-    console.error("SKILL_STORE_API_KEY is not set in environment variables.");
-    return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
+  if (!token) {
+    return NextResponse.json({ error: 'Unauthorized: License Key missing' }, { status: 401 });
   }
 
-  if (!token || token !== `Bearer ${validKey}`) {
-    return NextResponse.json({ error: 'Unauthorized: Invalid License Key' }, { status: 401 });
+  // 1. Check for Master Key (Demo/Admin)
+  let isAuthorized = masterKey && token === masterKey;
+
+  // 2. Check for Real Purchase in DB
+  if (!isAuthorized) {
+    const purchase = await prisma.purchase.findUnique({
+      where: { licenseKey: token }
+    });
+
+    // License exists and belongs to the requested skill
+    if (purchase && purchase.skillSlug === slug && purchase.status === 'succeeded') {
+      isAuthorized = true;
+    }
   }
+
+  if (!isAuthorized) {
+    return NextResponse.json({ error: 'Unauthorized: Invalid License Key for this theme' }, { status: 401 });
+  }
+
 
   const skill = getSkillBySlug(slug);
 
